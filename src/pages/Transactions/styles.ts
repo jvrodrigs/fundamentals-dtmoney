@@ -32,10 +32,10 @@ export const TransacitonsTable = styled.table`
 `;
 
 interface PriceProps {
-    typeColor?: 'green' | 'red';
+    typeColor?: 'income' | 'outcome';
 }
 
 export const PriceTextColor = styled.span<PriceProps>`
-    color: ${props => props.typeColor === 'green' ?
+    color: ${props => props.typeColor === 'income' ?
                      props.theme["green-300"] : props.theme["red-300"]};
 `;
