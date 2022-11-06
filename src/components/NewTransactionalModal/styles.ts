@@ -51,8 +51,13 @@ export const Content = styled(Dialog.Content)`
             cursor: pointer;
             transition: background-color 0.2s;
 
-            &:hover {
+            &:not(:disabled):hover {
                 background: ${props => props.theme["green-700"]};
+            }
+
+            &:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
             }
         }
     }
@@ -77,7 +82,7 @@ export const TransactionTypeContainer = styled(RadioGroup.Root)`
 `;
 
 interface TransactionTypeButtonProps {
-    colorIcon: 'green' | 'red';
+    typeicon: 'income' | 'outcome';
 }
 
 export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButtonProps>`
@@ -97,7 +102,7 @@ export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButt
     transition: background-color 0.2;
 
     svg {
-        color: ${props => props.colorIcon === 'green' ? props.theme["green-300"] : props.theme["red-300"]};
+        color: ${props => props.typeicon === 'income' ? props.theme["green-300"] : props.theme["red-300"]};
     }
 
     &[data-state='unchecked']:hover {
@@ -106,7 +111,7 @@ export const TransactionTypeButton = styled(RadioGroup.Item)<TransactionTypeButt
 
     &[data-state='checked'] {
         color: ${props => props.theme.white};
-        background: ${props => props.colorIcon === 'green' ? props.theme["green-500"] : props.theme["red-500"]};
+        background: ${props => props.typeicon === 'income' ? props.theme["green-500"] : props.theme["red-500"]};
 
         svg {
             color: ${props => props.theme.white};
