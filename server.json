@@ -31,6 +31,22 @@
       "type": "outcome",
       "createAt": "2022-11-06T14:37:23.111Z",
       "id": 4
+    },
+    {
+      "description": "Testando o Toast",
+      "price": 1200,
+      "category": "Toast",
+      "type": "outcome",
+      "createAt": "2022-11-07T18:34:17.727Z",
+      "id": 5
+    },
+    {
+      "description": "Nova Transaçcão",
+      "price": 1200,
+      "category": "Teste",
+      "type": "income",
+      "createAt": "2022-11-07T18:43:23.516Z",
+      "id": 6
     }
   ]
 }

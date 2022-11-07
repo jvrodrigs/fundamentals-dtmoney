@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import { api } from "../hooks/lib/axios";
 
 interface TransactionsData {
@@ -59,13 +60,19 @@ export function TransactionsProvider({ children }: TransactionProps){
 
     useEffect ( () => {
 
-        fetchData();
+        const myPromise = fetchData();
+
+        toast.promise(myPromise, {
+            pending: 'Conectando com o servidor...',
+            success: 'Informações recebidas! 🚀',
+            error: 'Error ao tentar se conectar com o servidor. 🤯'
+        })
 
     }, [])
 
     return(
         <TransactionsContenxt.Provider value={{ 
-                transactions: dataTransaction, 
+                transactions: dataTransaction,
                 fetchData,
                 fetchCreateNewData
             }}>

@@ -3,6 +3,7 @@ import * as z from 'zod';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod';
+import { toast } from 'react-toastify';
 import { X, ArrowCircleDown, ArrowCircleUp } from 'phosphor-react';
 
 import { CloseButton, Content, Overlay, TransactionTypeButton, TransactionTypeContainer } from './styles';
@@ -31,7 +32,12 @@ export function NewTransactionalModal() {
     const { fetchCreateNewData } = useContext(TransactionsContenxt);
 
     async function handleCreateTransaction(data: NewTransactionInputs) {
-        fetchCreateNewData(data);
+        const promiseNewTransaction = fetchCreateNewData(data);
+        toast.promise(promiseNewTransaction, {
+            pending: 'Enviando requisição para o servidor...',
+            success: 'Transação cadastrada com sucesso! 🚀',
+            error: 'Error ao tentar enviar transação para o servidor. 🤯'
+        });
         reset();
     }
     return(

@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import styled from "styled-components";
 
 export const SearchFormContainer = styled.form`
@@ -49,4 +50,8 @@ export const SearchFormContainer = styled.form`
             cursor: not-allowed;
         }
     }
+`
+
+export const TestProgressBarColor = styled(ToastContainer)`
+    color: ${props => props.theme["green-300"]};
 `
